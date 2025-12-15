@@ -39,7 +39,6 @@ def fetch_sales():
     products = get_products()
     return render_template("sales.html",sales=sales,products = products)
 
-
 #posting sales
 @app.route('/add_sale',methods=['GET','POST'])
 def add_sale():
@@ -52,8 +51,6 @@ def add_sale():
         return redirect(url_for('fetch_sales'))
     insert_sales(new_sale)
     return redirect(url_for('fetch_sales'))
-
-
 
 @app.route('/stock')
 def fetch_stock():
