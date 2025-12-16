@@ -1,24 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboaard</title>
-</head>
-<body>
-    <div class="container">
-        <div>
-            <p>Navbar</p>
-        </div>
+{% extends 'base.html' %}
+{% block title %} Dashboard {% endblock %}
 
-        <div>
-            <p>This is the Dashboaard page</p>
-        </div>
-
-
-        <div>
-            <p>Footer</p>
-        </div>
+{% block content %}
+<div>
+    <div>
+        <p>This is the Dashboard page</p>
     </div>
-</body>
-</html>
+
+    <!-- ---------------- SALES PER PRODUCT ---------------- -->
+    <div>
+        <h2>Sales per Product</h2>
+        <table id="salesProductTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Total Sold</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product, total in sales_per_product %}
+                <tr>
+                    <td>{{ product }}</td>
+                    <td>{{ total }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ---------------- SALES PER DAY ---------------- -->
+    <div>
+        <h2>Sales per Day</h2>
+        <table id="salesDayTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Total Sold</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for date, total in sales_per_day %}
+                <tr>
+                    <td>{{ date }}</td>
+                    <td>{{ total }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ---------------- PROFIT PER PRODUCT ---------------- -->
+    <div>
+        <h2>Profit per Product</h2>
+        <table id="profitProductTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product, profit in profit_per_product %}
+                <tr>
+                    <td>{{ product }}</td>
+                    <td>{{ profit }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ---------------- PROFIT PER DAY ---------------- -->
+    <div>
+        <h2>Profit per Day</h2>
+        <table id="profitDayTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for date, profit in profit_per_day %}
+                <tr>
+                    <td>{{ date }}</td>
+                    <td>{{ profit }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}
